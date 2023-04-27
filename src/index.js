@@ -35,6 +35,7 @@ function onSubmit(e) {
 
   async function doSearch() {
     try {
+      loadMoreButton.classList.add('is-hidden');
       const resultFromQuery = await fetchImages(searchQuery, perPage, page);
       if (resultFromQuery.hits.length === 0) {
         clearImagesListHtml();
@@ -44,10 +45,23 @@ function onSubmit(e) {
         );
       }
 
-      if (resultFromQuery.hits.length > 0) {
+      if (
+        resultFromQuery.hits.length > 0 &&
+        resultFromQuery.totalHits <= perPage
+      ) {
+        renderImagesList(resultFromQuery.hits);
+        Notify.info(`Hooray! We found ${resultFromQuery.totalHits} images.`);
+        return;
+      }
+
+      if (
+        resultFromQuery.hits.length > 0 &&
+        resultFromQuery.totalHits > perPage
+      ) {
         renderImagesList(resultFromQuery.hits);
         Notify.info(`Hooray! We found ${resultFromQuery.totalHits} images.`);
         loadMoreButton.classList.remove('is-hidden');
+        return;
       }
     } catch (error) {
       if (error.message === '404') {
