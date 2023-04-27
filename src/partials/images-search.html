@@ -1,5 +1,15 @@
-<div class="images-search-section">
-  <input type="text" id="search-box" />
-</div>
+<form class="search-form" id="search-form">
+  <input
+    type="text"
+    name="searchQuery"
+    autocomplete="off"
+    placeholder="Search images..."
+    class="search-input"
+  />
+  <button type="submit" class="search-button">Search</button>
+</form>
 
-<div class="images-results"></div>
+<div class="gallery">
+  <!-- Картки зображень -->
+</div>
+<button type="button" class="load-more is-hidden">Load more</button>
