@@ -1,1 +1,0 @@
-{"mappings":"AAAkBA,SAASC,cAAc,eACnBD,SAASC,cAAc","sources":["src/index.js"],"sourcesContent":["const searchBox = document.querySelector('#search-box');\nconst imagesResults = document.querySelector('.images-results');\n"],"names":["document","querySelector"],"version":3,"file":"index.d1bcd315.js.map"}
